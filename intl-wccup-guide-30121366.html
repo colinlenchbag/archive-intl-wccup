@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 专题 · 站点介绍 · intl-wccup.com</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fce6c9 0%, #f6cca0 40%, #edb27b 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      line-height: 1.6;
+      color: #2c241a;
+    }
+
+    .magazine-card {
+      max-width: 1080px;
+      width: 100%;
+      background: rgba(255, 252, 246, 0.88);
+      backdrop-filter: blur(2px);
+      border-radius: 40px 40px 28px 28px;
+      box-shadow: 0 20px 40px -12px rgba(120, 70, 30, 0.35),
+                  0 0 0 1px rgba(255, 220, 180, 0.4) inset;
+      padding: 2.5rem 2.8rem;
+      transition: box-shadow 0.2s;
+    }
+
+    @media (max-width: 700px) {
+      body { padding: 1.2rem; }
+      .magazine-card { padding: 1.8rem 1.4rem; border-radius: 28px; }
+    }
+
+    /* hero 横幅区域 */
+    .hero-banner {
+      margin-bottom: 2.8rem;
+      border-bottom: 2px solid #eddccb;
+      padding-bottom: 1.8rem;
+    }
+
+    .hero-banner h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #aa5a2b, #804d27);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-banner .sub {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-size: 1rem;
+      color: #6b4e34;
+    }
+
+    .hero-banner .sub span {
+      background: #e7d3bf;
+      padding: 0.15rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #4a3422;
+    }
+
+    /* 核心说明 / 背景 */
+    .background-note {
+      background: #f9efe3;
+      padding: 1.6rem 2rem;
+      border-radius: 28px;
+      margin-bottom: 2.5rem;
+      border-left: 5px solid #cd9f7b;
+      font-size: 1rem;
+    }
+
+    .background-note strong {
+      color: #7b4f2b;
+    }
+
+    /* 三段介绍卡片 */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+      }
+    }
+
+    .intro-item {
+      background: #ffffffd9;
+      border-radius: 24px;
+      padding: 1.8rem 1.5rem 1.8rem 1.5rem;
+      box-shadow: 0 6px 18px rgba(150, 90, 40, 0.08);
+      border: 1px solid #f0decd;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .intro-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(130, 70, 30, 0.12);
+    }
+
+    .intro-item h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #614229;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .intro-item h3::before {
+      content: "▍";
+      font-size: 1.4rem;
+      color: #bd835b;
+    }
+
+    .intro-item p {
+      font-size: 0.95rem;
+      color: #3a2d21;
+      margin-bottom: 0.3rem;
+    }
+
+    .intro-item .tag {
+      display: inline-block;
+      margin-top: 0.7rem;
+      background: #e3d0bd;
+      padding: 0.1rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #3f2c1b;
+      letter-spacing: 0.3px;
+    }
+
+    /* FAQ 摘要 + 提示区域 */
+    .faq-summary {
+      background: #f5e7db;
+      border-radius: 28px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem 2rem;
+    }
+
+    .faq-summary .left {
+      flex: 1 1 220px;
+    }
+
+    .faq-summary .left h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #4a3322;
+    }
+
+    .faq-summary .left p {
+      font-size: 0.9rem;
+      color: #5f4a37;
+    }
+
+    .faq-summary .right {
+      flex: 1 1 200px;
+      text-align: right;
+    }
+
+    .faq-summary .right .pill-link {
+      display: inline-block;
+      background: #b58b6a;
+      color: #fffbf5;
+      padding: 0.6rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 4px 10px rgba(130, 70, 30, 0.15);
+      border: none;
+      cursor: pointer;
+    }
+
+    .faq-summary .right .pill-link:hover {
+      background: #9f734f;
+      transform: scale(1.02);
+    }
+
+    /* 页尾访问提示 — 杂志脚注感 */
+    .footer-visit {
+      border-top: 1px solid #dbccbc;
+      padding-top: 1.8rem;
+      margin-top: 0.3rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-visit .note {
+      font-size: 0.9rem;
+      color: #5c4633;
+      max-width: 480px;
+    }
+
+    .footer-visit .note a {
+      color: #7b4f2b;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid #dbb898;
+      padding-bottom: 0.05rem;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .footer-visit .note a:hover {
+      border-bottom-color: #8a613f;
+      color: #4b311c;
+    }
+
+    .footer-visit .meta {
+      font-size: 0.75rem;
+      color: #8c735e;
+      letter-spacing: 0.5px;
+    }
+
+    .pill-link.secondary {
+      background: #dcc7b4;
+      color: #3e2b1b;
+      box-shadow: none;
+      font-weight: 500;
+    }
+
+    .pill-link.secondary:hover {
+      background: #cbb29b;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e8d9cb;
+      margin: 2rem 0 0.8rem 0;
+      opacity: 0.4;
+    }
+
+    .small-print {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #8c755f;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="magazine-card">
+
+  <!-- hero 横幅 -->
+  <div class="hero-banner">
+    <h1>世界杯 · 站点档案</h1>
+    <div class="sub">
+      <span>intl-wccup.com</span>
+      <span>赛事信息 · 可信来源</span>
+    </div>
+  </div>
+
+  <!-- 背景说明 -->
+  <div class="background-note">
+    <strong>关于本站</strong> —— intl-wccup.com 是一个以世界杯为核心主题的信息聚合与索引站点。不同于官方门户，它侧重收录与世界杯相关的背景资料、赛事沿革、参赛队伍概要及历史数据链接。<br>
+    站点内容经由编者整理，引用公开赛事记录，力求为浏览者提供结构化的参考入口。页面设计保持中立，不涉及投注、博彩或任何违规导流。
+  </div>
+
+  <!-- 三段自然介绍 (杂志卡片) -->
+  <div class="intro-grid">
+    <div class="intro-item">
+      <h3>赛事脉络</h3>
+      <p>从首届世界杯至今，每届主办国、冠亚军、最佳射手及经典比赛均有条目式整理。资料跨度覆盖男子与女子世界杯主要届次，并附注相关预选赛背景。</p>
+      <span class="tag">历史 · 数据</span>
+    </div>
+    <div class="intro-item">
+      <h3>参赛队参考</h3>
+      <p>提供各大洲足联代表队的世界杯参赛记录、晋级次数及近年成绩简表。信息来自国际足联公开报告及权威体育数据库，编者做了交叉比对。</p>
+      <span class="tag">队伍 · 纪录</span>
+    </div>
+    <div class="intro-item">
+      <h3>文化与场景</h3>
+      <p>世界杯不仅是竞技，更涉及主办城市、球迷文化、经典瞬间与赛事用球等周边。本站收录部分专题文章与多媒体索引，方便延伸阅读。</p>
+      <span class="tag">背景 · 深度</span>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 + 按钮感链接 (圆角) -->
+  <div class="faq-summary">
+    <div class="left">
+      <h4>常见疑问摘要</h4>
+      <p>站点更新频率如何？是否官方？<br>每月修订一次，数据基于公开档案。非国际足联官方站点，但所有引用均标注来源。</p>
+    </div>
+    <div class="right">
+      <a href="https://intl-wccup.com" class="pill-link">世界杯</a>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="footer-visit">
+    <div class="note">
+      <span>若需深入查阅完整赛程、历届统计与最新动态，可直接访问 </span>
+      <a href="https://intl-wccup.com">世界杯</a>
+      <span> 专题页。内容适合研究者、球迷及媒体从业者参考。</span>
+    </div>
+    <div class="meta">杂志专题 · 2025</div>
+  </div>
+
+  <!-- 极简分割 + 附加提示 (非链接, 仅说明) -->
+  <hr>
+  <div class="small-print">
+    本站介绍基于公开资料整理 · 内容持续修订
+  </div>
+
+</div>
+</body>
+</html>
